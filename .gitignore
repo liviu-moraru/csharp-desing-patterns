@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 
 **/c-sharp-design-patterns-singleton/
+**/c-sharp-design-patterns-state/
