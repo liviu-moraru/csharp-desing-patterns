@@ -1,27 +1,22 @@
-using System;
-
+#nullable enable
 namespace MySingleton.v1_Naive
 {
     public sealed class Singleton
     {
-        private static Singleton _instance;
+        private static Singleton? _instance;
 
         public static Singleton Instance
         {
             get
             {
-                if (_instance == null)
-                {
-                    _instance = new Singleton();
-                }
-
-                return _instance;
+                Logger.Log("Instance call");
+                return _instance ??= new Singleton();    
             }
         }
 
         private Singleton()
         {
-            
+            Logger.Log("Constructor invoked.");
         }
     }
 }
