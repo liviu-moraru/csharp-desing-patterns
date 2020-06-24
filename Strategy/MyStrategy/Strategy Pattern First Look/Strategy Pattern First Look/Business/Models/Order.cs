@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Strategy_Pattern_First_Look.Business.Strategies.Invoice;
 using Strategy_Pattern_First_Look.Business.Strategies.SalesTax;
 
 namespace Strategy_Pattern_First_Look.Business.Models
@@ -20,6 +22,8 @@ namespace Strategy_Pattern_First_Look.Business.Models
 
         public ShippingDetails ShippingDetails { get; set; }
         public ISalesTaxStrategy SalesTaxStrategy { get; set; }
+        
+        public IInvoiceStrategy InvoiceStrategy { get; set; }
 
         public decimal GetTax(ISalesTaxStrategy salesTaxStrategy = default)
         {
@@ -29,7 +33,22 @@ namespace Strategy_Pattern_First_Look.Business.Models
                 return 0m;
             }
 
-            return salesTaxStrategy.GetTax(this);
+            return strategy.GetTax(this);
+        }
+
+        public void FinalizeOrder()
+        {
+            if (SelectedPayments.Any(x => x.PaymentProvider == PaymentProvider.Invoice) &&
+                AmountDue > 0 &&
+                ShippingStatus == ShippingStatus.WaitingForPayment)
+            {
+                InvoiceStrategy.Generate(this);
+                ShippingStatus = ShippingStatus.ReadyForShippment;
+            }
+            else if (AmountDue > 0)
+            {
+                throw new Exception("Unable to finalize order");
+            }
         }
     }
 
