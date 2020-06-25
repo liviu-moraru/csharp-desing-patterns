@@ -4,13 +4,14 @@ namespace MediatorDemo.Structural
 {
     public class Colleague2 : Colleague
     {
-        public Colleague2(Mediator mediator) : base(mediator)
+        /*public Colleague2(Mediator mediator, string name) : base(mediator, name)
         {
-        }
+        }*/
+        
 
         public override void HandleNotification(string message)
         {
-            Console.WriteLine($"Collegue2 received notification message: {message}");
+            Console.WriteLine($"Colleague2 received notification message: {message}");
         }
     }
 }

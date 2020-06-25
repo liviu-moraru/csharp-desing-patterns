@@ -1,19 +1,40 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace MediatorDemo.Structural
 {
     public class ConcreteMediator : Mediator
     {
-        public Colleague Colleague1 { get; set; }
-        public Colleague Colleague2 { get; set; }
+        private List<Colleague> _colleagues = new List<Colleague>();
+
+        public void Register(Colleague colleague)
+        {
+            colleague.SetMediator(this);
+            _colleagues.Add(colleague);
+        }
+
+        public T CreateColleague<T>() where T : Colleague, new()
+        {
+            var c = new T();
+            c.SetMediator(this);
+            _colleagues.Add(c);
+            return c;
+        }
+        /*public override void Send(string message, Colleague colleague)
+        {
+            foreach (var col in _colleagues)
+            {
+                if (col != colleague)
+                {
+                    col.HandleNotification($"{colleague.Name} sent the message: {message}");
+                }
+            }
+        }*/
+        
+        
         public override void Send(string message, Colleague colleague)
         {
-            if (colleague == Colleague1)
-            {
-                this.Colleague2.HandleNotification(message);
-            }
-            else
-            {
-                this.Colleague1.HandleNotification(message);
-            }
+            this._colleagues.Where(col => col != colleague).ToList().ForEach(col => col.HandleNotification(message));
         }
     }
 }
