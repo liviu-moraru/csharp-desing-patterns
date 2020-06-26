@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorDemo", "MediatorDem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkerPositions", "MarkerPositions\MarkerPositions.csproj", "{284A2639-C50D-44C3-8D71-EE4D9F5BE81B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatRDemo", "MediatRDemo\MediatRDemo.csproj", "{52571191-4941-42F6-9704-A55FD3CD777F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{284A2639-C50D-44C3-8D71-EE4D9F5BE81B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{284A2639-C50D-44C3-8D71-EE4D9F5BE81B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{284A2639-C50D-44C3-8D71-EE4D9F5BE81B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52571191-4941-42F6-9704-A55FD3CD777F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52571191-4941-42F6-9704-A55FD3CD777F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52571191-4941-42F6-9704-A55FD3CD777F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52571191-4941-42F6-9704-A55FD3CD777F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
